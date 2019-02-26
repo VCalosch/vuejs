@@ -40,7 +40,7 @@
 
 <div>
   <div>
-      <button class="button is-primary" v-on:click.prevent="editar">Editar</button>
+      
 
       <div class="contenedor" v-for="x in res" :key="x.id">
         <p>Restaurante: {{ x.id }} </p>
@@ -92,20 +92,20 @@
 
 
   <!--Imported Bulma Carrusel extension-->
-  <section class="hero is-medium has-carousel">
+    <!-- <section class="hero is-medium has-carousel">
     <div class="hero-carousel carousel-animated carousel-animate-fade">
       <div class='carousel-container'>
-        <div class='carousel-item has-background '>
-          <img class="is-background" src="@/assets/images/slidder.jpg" alt="" />
+        <div class='carousel-item has-background is-active'>
+          <img class="is-background" src="images/slidder.jpg" alt="" />
         </div>
         <div class='carousel-item has-background'>
-          <img class="is-background" src="@/assets/images/slidder.jpg" alt="" />
+          <img class="is-background" src="images/slidder.jpg" alt="" />
         </div>
         <div class='carousel-item has-background'>
-          <img class="is-background" src="@/assets/images/slidder.jpg" alt="" />
+          <img class="is-background" src="images/slidder.jpg" alt="" />
         </div>
         <div class='carousel-item has-background'>
-          <img class="is-background" src="@/assets/images/slidder.jpg" alt="" />
+          <img class="is-background" src="images/slidder.jpg" alt="" />
         </div>
       </div>
     </div>
@@ -114,7 +114,7 @@
         <div class="container">
           <div class="navbar-brand">
             <a class="navbar-item">
-              <img src="@/assets/images/official-logo-v2.png" alt="Logo">
+              <img src="images/official-logo-v2.png" alt="Logo">
             </a>
             <span class="navbar-burger burger" data-target="navbarMenuHeroA">
               <span></span>
@@ -159,48 +159,74 @@
         </div>
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!--Main Body-->
-  <div class="paragraph"><p>Restaurantes y tipos de comida populares cerca de ti</p></div>
+  <!-- <div class="paragraph"><p>Restaurantes y tipos de comida populares cerca de ti</p></div> -->
+
+  <button class="button is-primary" v-on:click.prevent="editar">Editar</button>
 
   <!--Restaurant Cards-->
   <section>
     <!--First Row-->
-    <section class="section section-cards">
+    <section class="section section-cards" v-for="x in Math.ceil(res.length / 3)" :key="x">
       <div class="columns">
 
-        <div class="container">
+
+      <!-- <div v-for="x in res" :key="x.id">
+        <p>Restaurante: {{ x.id }} </p>
+      </div> -->
+
+        <!-- <div class="container" v-for="x in res" :key="x.id"> -->
+          <div class="container" v-for="item in res.slice((x - 1) * 3, x * 3)" :key="item">
           <div class="column">
             <!--Card #1-->
             <div class="card center-element">
               <div class="card-image">
                 <figure class="image is-4by3">
-                  <img class="image-border" src="@/assets/images/restaurant-cards/card-1.jpg" alt="Placeholder image">
+                  <img class="image-border card-img-top" src="@/assets/images/restaurant-cards/card-1.jpg" alt="Placeholder image">
                 </figure>
               </div>
               <div class="card-content">
                 <div class="media">
                   <div class="media-content">
-                    <p class="title">TINGLES</p>
-                    <p class="subtitle">+34 (874) 421-3768</p>
+                    <p class="title">{{item.restaurantChain}}</p>
+                    <p class="subtitle">{{item.phone}}</p>
                   </div>
                 </div>
                 <div class="content">
-                  <b>Especialidad:</b> Pollo
-                  <address><b>Dirección:</b> 282 Imlay Street, Eureka, Florida, 4105</address>
+                  <b>Especialidad:</b> {{item.foods}}
+                  <address><b>Dirección:</b> {{item.address}}</address>
                   <time><b>Horario:</b> 12:00 - 20:00 hrs</time>
                   <br>
-                  <a href="mailto:trevinopetersen@tingles.com" target="_top">trevinopetersen@tingles.com</a>
+                  <a href="mailto:trevinopetersen@tingles.com" target="_top">{{item.email}}</a>
+                  <!--Edit and Delete Button-->
+                  <div class="grouped-buttons">
+                    <div class="buttons is-centered">
+                        <a class="button is-success is-outlined" v-if="editarX===true" v-on:click.prevent="edit(item.id)">
+                          <span class="icon is-small">
+                            <i class="fas fa-pencil-alt"></i>
+                          </span>
+                          <span>Editar</span>
+                        </a>
+
+                       <a class="button is-danger is-outlined" v-if="editarX===true" v-on:click.prevent="remove(item.id)">
+                        <span>Borrar</span>
+                        <span class="icon is-small">
+                          <i class="fas fa-trash-alt"></i>
+                        </span>
+                      </a>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
+          </div>
         </div>
 
-        <div class="container">
+        <!-- <div class="container">
           <div class="column">
-            <!--Card #2-->
+            
             <div class="card center-element">
               <div class="card-image">
                 <figure class="image is-4by3">
@@ -224,11 +250,11 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <div class="container">
+        <!-- <div class="container">
           <div class="column">
-            <!--Card #3-->
+           
             <div class="card center-element">
               <div class="card-image">
                 <figure class="image is-4by3">
@@ -252,18 +278,18 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
       </div>
     </section>
     <!--Close of first row-->
 
     <!--Second Row-->
-    <section class="section section-cards">
+    <!-- <section class="section section-cards">
      <div class="columns">
       <div class="container">
         <div class="column">
-          <!--Card #4-->
+          
           <div class="card center-element">
             <div class="card-image">
               <figure class="image is-4by3">
@@ -291,7 +317,7 @@
 
       <div class="container">
         <div class="column">
-          <!--Card #5-->
+         
           <div class="card center-element">
             <div class="card-image">
               <figure class="image is-4by3">
@@ -319,7 +345,7 @@
 
       <div class="container">
         <div class="column">
-          <!--Card #6-->
+          
           <div class="card center-element">
             <div class="card-image">
               <figure class="image is-4by3">
@@ -346,7 +372,7 @@
       </div>
 
     </div>
-  </section>
+  </section> -->
   <!--Close of second row-->
 </section>
 
@@ -466,7 +492,9 @@ export default {
     },
 
     remove: function(id){
+      console.log(id);
       this.$http.delete('http://localhost:3000/restaurantes/'+id);
+
     }
 
 
@@ -538,26 +566,36 @@ export default {
     box-shadow: 0px 0px 40px lightgray;
   } */
 
-  @import url('https://fonts.googleapis.com/css?family=Raleway');
+  /*@font-face {
+	font-family: antartida;
+	src: url('css/Atartida-Bold.otf');
+}*/
+
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
 
 body{
 	font-family: 'Raleway', sans-serif;
 	font-size: 14px;
 }
+.center-element{
+	margin: 0 auto;
+}
+
 .card {
-	width: 270px;
-	height: 460px;
+	min-width: 230px;
+	width: 85%;
 	border-radius: 15px;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+	margin-bottom: 20px;
 }
 
 .title{
 	font-size: 24px;
+	color: #F5613A;
 }
 
-.center-element{
-	margin: 0 auto;
-}
+
 
 .media .media-content{
 	overflow: hidden;
@@ -565,9 +603,11 @@ body{
 
 .paragraph{
 	text-align: center;
-	margin: 38px;
+	margin: 40px;
+	margin-bottom: 55px;
 	font-size: 21px;
 	color: #FFCA2D;
+	font-weight: bold;
 }
 
 .section-cards{
@@ -582,6 +622,36 @@ body{
 
 .card-content{
 	border-top: 9px double #FFCA2D  !important;
+	padding: 15px;
 }
+
+.grouped-buttons{
+	margin-top: 15px;
+}
+
+.column{
+	padding: 0;
+	margin: 0 !important;
+}
+
+.columns{
+margin: 30px;
+}
+
+.card-img-top {
+  transition: transform .2s ease-out,opacity 1s ease-in-out,-webkit-transform .2s ease-out;
+}
+.card-img-top:hover {
+  -webkit-transform:scale(1.1,1.1);
+  transform:scale(1.1, 1.1);
+}
+
+.is-4by3{
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	overflow:hidden;
+	display: block;
+}
+
 
 </style>
