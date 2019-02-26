@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="hello especialBG">
       
 
       <!-- <form @submit.prevent="addSkill">
@@ -160,11 +160,72 @@
       </div>
     </div>
   </section> -->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="https://bulma.io">
+      <img src="@/assets/images/official-logo-v2.png" width="112" height="28">
+    </a>
+
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="navbarBasicExample" class="navbar-menu">
+    <div class="navbar-start">
+      
+
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item">
+        <div class="buttons">
+          <!-- <a class="button is-primary">
+            <strong>Sign up</strong>
+          </a>
+          <a class="button is-light">
+            Log in
+          </a> -->
+              <span class="navbar-item has-text-white">
+                <a class="button is-success ">
+                  <span class="icon">
+                    <i class="fa fa-github"></i>
+                  </span>
+                  <span v-on:click.prevent="guardar">Agregar Nuevo</span>
+                </a>
+              </span>
+
+            <span class="navbar-item has-text-white">
+                <a class="button is-success ">
+                  <span class="icon">
+                    <i class="fa fa-github"></i>
+                  </span>
+                  <span v-on:click.prevent="editar">Editar</span>
+                </a>
+              </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
 
   <!--Main Body-->
-  <!-- <div class="paragraph"><p>Restaurantes y tipos de comida populares cerca de ti</p></div> -->
+  <!-- <form>
+      <input placeholder="Phone" name="phone" v-model="restaurantes.phone">
+      <input placeholder="Balance" name="balance" v-model="restaurantes.balance">
+      <input placeholder="Picture" name="picture" v-model="restaurantes.picture">
+      <input placeholder="RestaurantChain" name="restaurantChain" v-model="restaurantes.restaurantChain">
+      <input placeholder="Email" name="email" v-model="restaurantes.email">
+      <input placeholder="Address" name="address" v-model="restaurantes.address">
+      <input placeholder="Foods" name="foods" v-model="restaurantes.foods">
 
-  <button class="button is-primary" v-on:click.prevent="editar">Editar</button>
+      <button class="button is-primary" v-on:click.prevent="post">Guardar</button> 
+    </form> -->
+   <div class="paragraph"><p>Restaurantes y tipos de comida populares cerca de ti</p></div>
+
+  <!-- <button class="button is-primary" v-on:click.prevent="editar">Editar</button> -->
 
   <!--Restaurant Cards-->
   <section>
@@ -184,7 +245,7 @@
             <div class="card center-element">
               <div class="card-image">
                 <figure class="image is-4by3">
-                  <img class="image-border card-img-top" src="@/assets/images/restaurant-cards/card-1.jpg" alt="Placeholder image">
+                  <img class="image-border card-img-top" :src="item.picture" alt="Placeholder image">
                 </figure>
               </div>
               <div class="card-content">
@@ -224,159 +285,190 @@
           </div>
         </div>
 
-        <!-- <div class="container">
-          <div class="column">
-            
-            <div class="card center-element">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img class="image-border" src="@/assets/images/restaurant-cards/card-5.jpg" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title">POLARIUM</p>
-                    <p class="subtitle">+34 (973) 591-2969</p>
-                  </div>
-                </div>
-                <div class="content">
-                  <b>Especialidad:</b> Kebab
-                  <address><b>Dirección:</b> 261 Elliott Place, Florence, Oklahoma, 3344</address>
-                  <time><b>Horario:</b> 13:00 - 20:00 hrs</time>
-                  <br>
-                  <a href="mailto:trevinopetersen@polarium.com" target="_top">trevinopetersen@polarium.com</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
 
-        <!-- <div class="container">
-          <div class="column">
-           
-            <div class="card center-element">
-              <div class="card-image">
-                <figure class="image is-4by3">
-                  <img class="image-border" src="@/assets/images/restaurant-cards/card-3.jpg" alt="Placeholder image">
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-content">
-                    <p class="title">KIGGLE</p>
-                    <p class="subtitle">+34 (844) 439-3178</p>
-                  </div>
-                </div>
-                <div class="content">
-                  <b>Especialidad:</b> Durum
-                  <address><b>Dirección:</b> 796 Ditmas Avenue, Dale, New Mexico, 1359</address>
-                  <time><b>Horario:</b> 10:00 - 20:00 hrs</time>
-                  <br>
-                  <a href="mailto:trevinopetersen@kiggle.com" target="_top">trevinopetersen@kiggle.com</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> -->
 
       </div>
     </section>
-    <!--Close of first row-->
 
-    <!--Second Row-->
-    <!-- <section class="section section-cards">
-     <div class="columns">
-      <div class="container">
-        <div class="column">
-          
-          <div class="card center-element">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <img class="image-border" src="@/assets/images/restaurant-cards/card-4.jpg" alt="Placeholder image">
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title">APEX</p>
-                  <p class="subtitle">+34 (981) 401-2653</p>
-                </div>
-              </div>
-              <div class="content">
-                <b>Especialidad:</b> Pollo
-                <address><b>Dirección:</b> 96 Ditmas Avenue, Dale, New Mexico, 1359</address>
-                <time><b>Horario:</b> 12:00 - 20:00 hrs</time>
-                <br>
-                <a href="mailto:trevinopetersen@apex.com" target="_top">trevinopetersen@apex.com</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="column">
-         
-          <div class="card center-element">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <img class="image-border" src="@/assets/images/restaurant-cards/card+.png" alt="Placeholder image">
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title">EXPOSA</p>
-                  <p class="subtitle">+34 (909) 554-2213</p>
-                </div>
-              </div>
-              <div class="content">
-                <b>Especialidad:</b> Comida de cine
-                <address><b>Dirección:</b> 342 Cypress Court, Noxen, Federated States Of Micronesia, 1424</address>
-                <time><b>Horario:</b> 12:00 - 22:00 hrs</time>
-                <br>
-                <a href="mailto:trevinopetersen@exposa.com" target="_top">trevinopetersen@exposa.com</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="column">
-          
-          <div class="card center-element">
-            <div class="card-image">
-              <figure class="image is-4by3">
-                <img class="image-border" src="@/assets/images/restaurant-cards/card-6.jpg" alt="Placeholder image">
-              </figure>
-            </div>
-            <div class="card-content">
-              <div class="media">
-                <div class="media-content">
-                  <p class="title">TAQUITO</p>
-                  <p class="subtitle">+34 (874) 600-3768</p>
-                </div>
-              </div>
-              <div class="content">
-                <b>Especialidad:</b> Tacos
-                <address><b>Dirección:</b> 800 Ditmas Avenue, Dale, New Mexico, 1359</address>
-                <time><b>Horario:</b> 10:00 - 19:00 hrs</time>
-                <br>
-                <a href="mailto:trevinopetersen@taquito.com" target="_top">trevinopetersen@taquito.com</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section> -->
-  <!--Close of second row-->
 </section>
 
+  <div class="modal" id="page-modal">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box">
 
+            <!-- <form>
+      <input placeholder="Phone" name="phone" v-model="restaurantes.phone">
+      <input placeholder="Balance" name="balance" v-model="restaurantes.balance">
+      <input placeholder="Picture" name="picture" v-model="restaurantes.picture">
+      <input placeholder="RestaurantChain" name="restaurantChain" v-model="restaurantes.restaurantChain">
+      <input placeholder="Email" name="email" v-model="restaurantes.email">
+      <input placeholder="Address" name="address" v-model="restaurantes.address">
+      <input placeholder="Foods" name="foods" v-model="restaurantes.foods">
+
+      <button class="button is-primary" v-on:click.prevent="fetchData">Actualizar</button> 
+    </form> -->
+<div class="columns" style="margin: 30px;">
+    <div class="column is-half ">
+
+
+ <div class="field">
+   <label class="label">URL Imagen</label>
+   <div class="control">
+     <input class="input is-rounded is-warning " type="text" name="picture" v-model="restaurantes.picture">
+   </div>
+ </div>
+
+ <div class="field">
+   <label class="label">Nombre de Restaurante</label>
+   <div class="control">
+     <input class="input is-rounded is-success" type="text" name="restaurantChain" v-model="restaurantes.restaurantChain">
+   </div>
+ </div>
+
+ <div class="field">
+   <label class="label">Teléfono</label>
+   <div class="control">
+     <input class="input is-rounded is-warning" type="text" name="phone" v-model="restaurantes.phone">
+   </div>
+ </div>
+
+ <div class="field">
+   <label class="label">Especialidad</label>
+   <div class="control">
+     <input class="input is-rounded is-success" type="text" name="foods" v-model="restaurantes.foods">
+   </div>
+ </div>
+
+</div>
+
+
+<div class="column is-half ">
+  <div class="field">
+   <label class="label">Dirección</label>
+   <div class="control">
+     <input class="input is-rounded is-warning" type="text" name="address" v-model="restaurantes.address">
+   </div>
+ </div>
+
+ <div class="field">
+   <label class="label">Horario</label>
+   <div class="control">
+     <input class="input is-rounded is-success" type="text" >
+   </div>
+ </div>
+
+ <div class="field">
+   <label class="label">Email</label>
+   <div class="control">
+     <input class="input is-rounded is-warning" type="text" name="email" v-model="restaurantes.email">
+   </div>
+ </div>
+
+
+ <div class="field">
+   <label class="label">Balance</label>
+   <div class="control">
+     <input class="input is-rounded is-success" type="text" name="balance" v-model="restaurantes.balance">
+   </div>
+ </div>
+</div>
+
+</div>
+
+<button class="button is-primary" v-on:click.prevent="fetchData">Actualizar</button>
+
+
+
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close" v-on:click.prevent="close" ></button>
+</div>
+
+
+
+<!-- Modal 2 -->
+
+  <div class="modal" id="page-modal2">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+    <div class="box">
+<div class="columns" style="margin: 30px;">
+    <div class="column is-half ">
+
+
+ <div class="field">
+   <label class="label">URL Imagen</label>
+   <div class="control">
+     <input class="input is-rounded is-warning " type="text" name="picture" v-model="restaurantes.picture">
+   </div>
+ </div>
+
+ <div class="field">
+   <label class="label">Nombre de Restaurante</label>
+   <div class="control">
+     <input class="input is-rounded is-success" type="text" name="restaurantChain" v-model="restaurantes.restaurantChain">
+   </div>
+ </div>
+
+ <div class="field">
+   <label class="label">Teléfono</label>
+   <div class="control">
+     <input class="input is-rounded is-warning" type="text" name="phone" v-model="restaurantes.phone">
+   </div>
+ </div>
+
+ <div class="field">
+   <label class="label">Especialidad</label>
+   <div class="control">
+     <input class="input is-rounded is-success" type="text" name="foods" v-model="restaurantes.foods">
+   </div>
+ </div>
+
+</div>
+
+
+<div class="column is-half ">
+  <div class="field">
+   <label class="label">Dirección</label>
+   <div class="control">
+     <input class="input is-rounded is-warning" type="text" name="address" v-model="restaurantes.address">
+   </div>
+ </div>
+
+ <div class="field">
+   <label class="label">Horario</label>
+   <div class="control">
+     <input class="input is-rounded is-success" type="text" >
+   </div>
+ </div>
+
+ <div class="field">
+   <label class="label">Email</label>
+   <div class="control">
+     <input class="input is-rounded is-warning" type="text" name="email" v-model="restaurantes.email">
+   </div>
+ </div>
+
+
+ <div class="field">
+   <label class="label">Balance</label>
+   <div class="control">
+     <input class="input is-rounded is-success" type="text" name="balance" v-model="restaurantes.balance">
+   </div>
+ </div>
+</div>
+
+</div>
+
+<button class="button is-primary" v-on:click.prevent="post">Guardar</button>
+
+
+
+    </div>
+  </div>
+  <button class="modal-close is-large" aria-label="close" v-on:click.prevent="close2" ></button>
+</div>
 
 
 
@@ -401,6 +493,8 @@
 
 <script>
 import json from 'C:/Users/Vills/Desktop/jsonserver/db.json'
+
+//import "../../node_modules/bulma-extensions/bulma-carousel/dist/css/bulma-carousel.min.css"
 import bulmaCarousel from '../../node_modules/bulma-extensions/bulma-carousel/dist/js/bulma-carousel.min.js';
 
 export default {
@@ -411,6 +505,7 @@ export default {
       skill: '',
       editarX: false,
       selectedRestaurant:null,
+      selectedAction:null,
       // skills: [
       //   { "skill": "Vue" },
       //   { "skill": "Angular" }
@@ -456,7 +551,7 @@ export default {
         picture: this.restaurantes.picture,
         restaurantChain: this.restaurantes.restaurantChain,
         email: this.restaurantes.email,
-        phone: 'Hello',
+        phone: this.restaurantes.phone,
         address: this.restaurantes.address,
         foods: this.restaurantes.foods
       }).then(function(x){
@@ -484,6 +579,17 @@ export default {
 
     },
     
+    guardar: function(){
+         var modal = document.getElementById('page-modal2');
+      
+      modal.style.display = 'block';
+    },
+    close2:function(){
+      var modal = document.getElementById('page-modal2');
+      //var close = document.getElementById('modal-close');
+      modal.style.display = 'none';
+    },
+    
     
     close: function(){
       var modal = document.getElementById('page-modal');
@@ -499,6 +605,9 @@ export default {
 
 
 
+    },
+    updated(){
+      this.bulmaExtensions.carousel = new bulmaCarousel(document.getElementById("bulmaCarousel"));
     },
     mounted(){
       this.$http.get('http://localhost:3000/restaurantes').then(function(res){
@@ -572,7 +681,6 @@ export default {
 }*/
 
 @import url('https://fonts.googleapis.com/css?family=Raleway');
-
 
 body{
 	font-family: 'Raleway', sans-serif;
